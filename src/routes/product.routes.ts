@@ -6,3 +6,5 @@ const productController = new CreateProductController();
 
 productRoutes.post("/newproduct", productController.handle);
 productRoutes.get("/products", productController.getProducts);
+productRoutes.put("/updated/:id", productController.updatedProduct);
+productRoutes.delete("/delete/:id", productController.destroy);
