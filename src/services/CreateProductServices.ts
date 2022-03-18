@@ -39,4 +39,16 @@ export class CreateProductServices {
 
     return { product };
   }
+
+  async getProducts() {
+    const productRepository = getRepository(Product);
+
+    const currentProduct = await productRepository.find();
+
+    if (!currentProduct) {
+      throw new AppError("Product not found", 401);
+    }
+
+    return currentProduct;
+  }
 }

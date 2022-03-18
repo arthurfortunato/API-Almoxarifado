@@ -1,9 +1,8 @@
-import { Router } from 'express';
-import { productRoutes } from './product.routes';
+import { Router } from "express";
+import { productRoutes } from "./product.routes";
 
 const routes = Router();
 
-routes.use('/product', productRoutes);
+routes.use("/product", productRoutes);
 
-export { routes }
-
+export { routes };
