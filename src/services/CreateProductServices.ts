@@ -1,5 +1,6 @@
 import { getRepository } from "typeorm";
 import { Product } from "../entities/Product";
+import { AppError } from "../error/AppError";
 
 interface IProduct {
   name: string;
@@ -13,13 +14,25 @@ export class CreateProductServices {
   async newProduct(product: IProduct) {
     const productRepository = getRepository(Product);
 
+    if (!product.name) {
+      throw new AppError("Incorrect Name", 401);
+    }
+    if (!product.code) {
+      throw new AppError("Incorrect Code", 401);
+    }
+    if (!product.sector) {
+      throw new AppError("Incorrect Sector", 401);
+    }
+    if (!product.amount) {
+      throw new AppError("Incorrect Price", 401);
+    }
+
     const productAlreadyExists = await productRepository.findOne({
       where: { code: product.code },
     });
 
-    
     if (productAlreadyExists) {
-      throw new Error('Existing product');
+      throw new AppError("Existing product");
     }
 
     await productRepository.save(product);
