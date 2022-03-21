@@ -10,4 +10,13 @@ export class CreateUserController {
 
     return response.status(200).json(users);
   }
+
+  async signup(request: Request, response: Response) {
+    const user = request.body;
+    const userService = new CreateUserService();
+
+    const users = await userService.signup(user);
+
+    return response.status(201).json(users);
+  }
 }
