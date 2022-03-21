@@ -78,4 +78,16 @@ export class CreateUserService {
 
     return { token }
   }
+
+  async getUsers() {
+    const productRepository = getRepository(User);
+
+    const currentUser = await productRepository.find()
+
+    if (!currentUser) {
+      throw new AppError('User not found', 401);
+    }
+
+    return currentUser;
+  }
 }

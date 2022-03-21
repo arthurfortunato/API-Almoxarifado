@@ -19,4 +19,14 @@ export class CreateUserController {
 
     return response.status(201).json(users);
   }
+
+  async getUser(request: Request, response: Response) {
+    
+    const userService = new CreateUserService();
+
+    const getUser = await userService.getUsers()
+
+    return response.json(getUser)
+  }
+
 }
