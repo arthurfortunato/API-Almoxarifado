@@ -1,8 +1,10 @@
 import { getRepository } from "typeorm";
 import { User } from "../entities/User";
-
-import md5 from "crypto-js/md5";
 import { AppError } from "../error/AppError";
+
+import { sign } from "jsonwebtoken";
+import md5 from "crypto-js/md5";
+import authConfig from "../config/auth";
 
 interface IUserSignIn {
   email: string;
@@ -20,35 +22,60 @@ export class CreateUserService {
     const userRepository = getRepository(User);
 
     const { email, password } = user;
-    const passwordHash = md5(password.toString());
+    const passwordHash = md5(password).toString();
 
     const existUser = await userRepository.findOne({
-      where: { email: email, password: passwordHash },
+      where: { email, password: passwordHash },
     });
 
-    if (existUser) {
+    if (!existUser) {
       throw new AppError("Usuário não encontrado", 401);
     }
 
-    return { user };
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign(
+      {
+        name: existUser.name,
+        email: existUser.email,
+      },
+      secret,
+      {
+        subject: existUser.email,
+        expiresIn,
+      }
+    );
+    // @ts-expect-error ignora
+    delete existUser.password;
+
+    return { accessToken: token };
   }
 
   async signup(user: IUserSignUp) {
     const userRepository = getRepository(User);
 
-    const existUser = await userRepository.findOne({
-      where: { email: user.email },
-    });
+    const existUser = await userRepository.findOne({ where: { email: user.email } })
 
     if (existUser) {
-      throw new AppError("Já existe um usuário com esse e-mail", 401);
+      throw new AppError('Já existe um usuário com esse e-mail', 401)
     }
 
     const userData = {
       ...user,
-      password: md5(user.password).toString(),
-    };
+      password: md5(user.password).toString()
+    }
 
-    return userData;
+    const userCreate = await userRepository.save(userData);
+
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({
+      name: user.name,
+    }, secret, {
+      subject: userCreate.email,
+      expiresIn,
+    })
+
+    return { token }
   }
 }
