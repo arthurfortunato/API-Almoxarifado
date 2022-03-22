@@ -21,12 +21,11 @@ export class CreateUserController {
   }
 
   async getUser(request: Request, response: Response) {
-    
+    const user = request.user;
     const userService = new CreateUserService();
 
-    const getUser = await userService.getUsers()
+    const getUser = await userService.getUsers(user);
 
-    return response.json(getUser)
+    return response.status(200).json(getUser);
   }
-
 }

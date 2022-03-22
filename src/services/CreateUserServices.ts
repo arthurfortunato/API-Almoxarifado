@@ -54,39 +54,48 @@ export class CreateUserService {
   async signup(user: IUserSignUp) {
     const userRepository = getRepository(User);
 
-    const existUser = await userRepository.findOne({ where: { email: user.email } })
+    const existUser = await userRepository.findOne({
+      where: { email: user.email },
+    });
 
     if (existUser) {
-      throw new AppError('Já existe um usuário com esse e-mail', 401)
+      throw new AppError("Já existe um usuário com esse e-mail", 401);
     }
 
     const userData = {
       ...user,
-      password: md5(user.password).toString()
-    }
+      password: md5(user.password).toString(),
+    };
 
     const userCreate = await userRepository.save(userData);
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({
-      name: user.name,
-    }, secret, {
-      subject: userCreate.email,
-      expiresIn,
-    })
+    const token = sign(
+      {
+        name: user.name,
+      },
+      secret,
+      {
+        subject: userCreate.email,
+        expiresIn,
+      }
+    );
 
-    return { token }
+    return { accessToken: token };
   }
 
-  async getUsers() {
-    const productRepository = getRepository(User);
-
-    const currentUser = await productRepository.find()
+  async getUsers(user: Partial<User>) {
+    const userRepository = getRepository(User);
+    const currentUser = await userRepository.findOne({
+      where: { email: user.email },
+    });
 
     if (!currentUser) {
-      throw new AppError('User not found', 401);
+      throw new AppError("User not found", 401);
     }
+    // @ts-expect-error ignora
+    delete currentUser.password;
 
     return currentUser;
   }
