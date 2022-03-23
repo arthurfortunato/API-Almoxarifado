@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Product } from "../entities/Product";
 import { AppError } from "../error/AppError";

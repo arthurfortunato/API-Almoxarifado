@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "ESNext",
+    "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./build",
     "esModuleInterop": true,
@@ -11,16 +11,11 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "skipLibCheck": true,      
-    "forceConsistentCasingInFileNames": true ,
     "typeRoots": [
-      "./src/@types/",
-      "./node_modules/@types/"
+      "./src/@types",
+      "./@types",
+      "./node_modules/@types"
     ]
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+    
   }
 }
