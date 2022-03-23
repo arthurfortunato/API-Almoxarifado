@@ -11,7 +11,7 @@ import { globalErrors } from "./middleware/globalErrors";
 createConnection().then(() => {
   const app = express();
   const PORT:any = process.env.PORT || process.env.LOCAL;
-  const HOST:string = '0.0.0.0';
+  const HOST = '0.0.0.0';
 
   app.use(cors());
   app.use(express.json());
