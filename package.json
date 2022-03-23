@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/express-serve-static-core": "^4.17.28",
+    "@types/react-router": "^5.1.18",
     "config-yml": "^0.10.3",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
