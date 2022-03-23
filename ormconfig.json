@@ -1,10 +1,6 @@
 {
   "type": "mssql",
-  "host": "DESKTOP-NOFE3VI",
-  "port": 1433,
-  "username": "Admin",
-  "password": "admin",
-  "database": "almoxarifado",
+  "url": "mssql://Admin:admin@DESKTOP-NOFE3VI:1433/almoxarifado",
   "logging": false,
   "entities": [
     "src/entities/*.ts"
