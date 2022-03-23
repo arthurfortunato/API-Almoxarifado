@@ -1,3 +1,4 @@
+declare module 'cors';
 declare namespace Express {
   export interface Request {
     user: {
