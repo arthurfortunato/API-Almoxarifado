@@ -10,14 +10,15 @@ import { globalErrors } from "./middleware/globalErrors";
 
 createConnection().then(() => {
   const app = express();
-  const PORT = process.env.PORT || 4000;
+  const PORT:any = process.env.PORT || process.env.LOCAL;
+  const HOST:string = '0.0.0.0';
 
   app.use(cors());
   app.use(express.json());
   app.use(routes);
-  app.use(globalErrors)
+  app.use(globalErrors);
 
-  app.listen(PORT, () => {
+  app.listen(PORT, HOST, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`)
   })
 }).catch((error) => {
