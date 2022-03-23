@@ -7,6 +7,6 @@ const productController = new CreateProductController();
 
 productRoutes.post("/newproduct", userAuthenticated, productController.handle);
 productRoutes.get("/products", userAuthenticated, productController.getProducts);
-productRoutes.get("/products/:id", userAuthenticated, productController.getProducts);
-productRoutes.put("/updated/:id", userAuthenticated, productController.updatedProduct);
-productRoutes.delete("/delete/:id", userAuthenticated, productController.destroy);
+productRoutes.get("/products/:code", userAuthenticated, productController.getProducts);
+productRoutes.put("/updated/:code", userAuthenticated, productController.updatedProduct);
+productRoutes.delete("/delete/:code", userAuthenticated, productController.destroy);

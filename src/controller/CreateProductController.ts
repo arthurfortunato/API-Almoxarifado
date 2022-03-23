@@ -44,7 +44,7 @@ export class CreateProductController {
   async destroy(request: Request, response: Response) {
     const productRepository = getRepository(Product);
 
-    const product = await productRepository.delete(request.params.id);
+    const product = await productRepository.delete(request.params.code);
 
     return response.send(product);
   }
