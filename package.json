@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
-  
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "start": "node src/server.ts",
+    "start": "ts-node src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
@@ -22,6 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "mssql": "^8.0.2",
     "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.7.0",
     "typeorm": "^0.2.41",
     "uuid": "^8.3.2"
   },
