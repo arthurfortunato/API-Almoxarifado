@@ -1,0 +1,21 @@
+{
+  "type": "mssql",
+  "host": "DESKTOP-NOFE3VI",
+  "port": 1433,
+  "username": "Admin",
+  "password": "admin",
+  "database": "almoxarifado",
+  "logging": false,
+  "entities": [
+    "src/entities/*.ts"
+  ],
+  "migrations": [
+    "src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "src/database/migrations",
+    "entitiesDir": "src/entities"
+  },
+  "synchronize": true,
+  "options": {"trustServerCertificate": true}   
+}
