@@ -14,8 +14,10 @@ interface ITokenPayload {
 export function userAuthenticated(
   req: Request,
   res: Response,
+  // @ts-ignore
   next: NextFunction,
 ): void {
+  // @ts-ignore
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -28,7 +30,7 @@ export function userAuthenticated(
     const decoded = verify(token, authConfig.jwt.secret);
 
     const { sub, email } = decoded as ITokenPayload;
-
+    // @ts-ignore
     req.user = {
       id: sub,
       email
