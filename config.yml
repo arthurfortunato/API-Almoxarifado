@@ -1,6 +1,0 @@
-app:
-    url: https://api-almoxarifado.herokuapp.com/
-    cache: redis
- 
-db:
-    location: mssql
