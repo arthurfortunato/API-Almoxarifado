@@ -2,7 +2,6 @@ import 'express-async-errors'
 import cors from 'cors';
 
 import express from "express";
-import 'express';
 import "reflect-metadata";
 import { createConnection } from "typeorm";
 
