@@ -5,8 +5,8 @@ import { userAuthenticated } from "../middleware/userAuthenticated";
 export const productRoutes = Router();
 const productController = new CreateProductController();
 
-productRoutes.post("/newproduct", userAuthenticated, productController.handle);
-productRoutes.get("/products", userAuthenticated, productController.getProducts);
-productRoutes.get("/products/:code", userAuthenticated, productController.getProducts);
-productRoutes.put("/updated/:code", userAuthenticated, productController.updatedProduct);
-productRoutes.delete("/delete/:code", userAuthenticated, productController.destroy);
+productRoutes.post("/newproduct", userAuthenticated, productController.createProduct);
+productRoutes.get("/products", userAuthenticated, productController.getProduct);
+productRoutes.get("/productsId/:id", userAuthenticated, productController.getProductId);
+productRoutes.put("/updated/:id", userAuthenticated, productController.updatedProduct);
+productRoutes.delete("/delete/:id", userAuthenticated, productController.destroy);

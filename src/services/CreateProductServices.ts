@@ -3,6 +3,7 @@ import { Product } from "../entities/Product";
 import { AppError } from "../error/AppError";
 
 interface IProduct {
+  id: string;
   name: string;
   code: string;
   description: string;
@@ -40,7 +41,7 @@ export class CreateProductServices {
     return { product };
   }
 
-  async getProducts() {
+  async getProduct() {
     const productRepository = getRepository(Product);
 
     const currentProduct = await productRepository.find();
