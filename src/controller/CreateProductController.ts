@@ -11,7 +11,7 @@ export class CreateProductController {
 
     const products = await createProductService.newProduct(product);
 
-    return response.json(products);
+    return response.status(201).json(products);
   }
 
   async getProduct(request: Request, response: Response) {

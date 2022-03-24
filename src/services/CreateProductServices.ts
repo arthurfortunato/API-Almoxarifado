@@ -16,16 +16,16 @@ export class CreateProductServices {
     const productRepository = getRepository(Product);
 
     if (!product.name) {
-      throw new AppError("Incorrect Name", 401);
+      throw new AppError("Enter the product name", 404);
     }
     if (!product.code) {
-      throw new AppError("Incorrect Code", 401);
+      throw new AppError("Incorrect Code", 404);
     }
     if (!product.sector) {
-      throw new AppError("Incorrect Sector", 401);
+      throw new AppError("Incorrect Sector", 404);
     }
     if (!product.amount) {
-      throw new AppError("Incorrect Price", 401);
+      throw new AppError("Incorrect Price", 404);
     }
 
     const productAlreadyExists = await productRepository.findOne({
@@ -47,7 +47,7 @@ export class CreateProductServices {
     const currentProduct = await productRepository.find();
 
     if (!currentProduct) {
-      throw new AppError("Product not found", 401);
+      throw new AppError("Product not found", 404);
     }
 
     return currentProduct;

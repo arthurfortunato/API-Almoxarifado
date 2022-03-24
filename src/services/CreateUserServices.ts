@@ -29,7 +29,7 @@ export class CreateUserService {
     });
 
     if (!existUser) {
-      throw new AppError("Usuário não encontrado", 401);
+      throw new AppError("Usuário não encontrado", 404);
     }
 
     const { secret, expiresIn } = authConfig.jwt;
