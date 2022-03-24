@@ -6,7 +6,7 @@ export const productRoutes = Router();
 const productController = new CreateProductController();
 
 productRoutes.post("/newproduct", userAuthenticated, productController.createProduct);
-productRoutes.get("/products", userAuthenticated, productController.getProduct);
-productRoutes.get("/productsId/:id", userAuthenticated, productController.getProductId);
+productRoutes.get("/product", userAuthenticated, productController.getProduct);
+productRoutes.get("/productId/:id", userAuthenticated, productController.getProductId);
 productRoutes.put("/updated/:id", userAuthenticated, productController.updatedProduct);
 productRoutes.delete("/delete/:id", userAuthenticated, productController.destroy);
