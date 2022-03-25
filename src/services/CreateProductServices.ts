@@ -27,6 +27,9 @@ export class CreateProductServices {
     if (!product.amount) {
       throw new AppError("Incorrect Price", 404);
     }
+    if (!product.description) {
+      throw new AppError("Incorrect Description", 404);
+    }
 
     const productAlreadyExists = await productRepository.findOne({
       where: { code: product.code },
