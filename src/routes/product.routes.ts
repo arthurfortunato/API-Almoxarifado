@@ -15,8 +15,8 @@ const getProductController = new GetProductController();
 const deleteProductController = new DeleteProductController();
 const updateProductController = new UpdateProductController();
 
-productRoutes.post("/newproduct", userAuthenticated, createProductController.handle);
-productRoutes.get("/product", userAuthenticated, getProductController.handle);
-productRoutes.get("/productId/:id", userAuthenticated, getIdProductController.handle);
-productRoutes.put("/updated/:id", userAuthenticated, updateProductController.handle);
-productRoutes.delete("/delete/:id", userAuthenticated, deleteProductController.handle);
+productRoutes.post("/newproduct", createProductController.handle);
+productRoutes.get("/product", getProductController.handle);
+productRoutes.get("/productId/:id", getIdProductController.handle);
+productRoutes.put("/updated/:id", updateProductController.handle);
+productRoutes.delete("/delete/:id", deleteProductController.handle);

@@ -3,12 +3,12 @@ import cors from 'cors';
 
 import express from "express";
 import "reflect-metadata";
-import { createConnection } from "typeorm";
+import createConnection from './database';
 
 import { routes } from './routes/index';
 import { globalErrors } from "./middleware/globalErrors";
 
-createConnection().then(() => {
+  createConnection();
   const app = express();
   const PORT = process.env.PORT || process.env.LOCAL;
 
@@ -20,6 +20,3 @@ createConnection().then(() => {
   app.listen(PORT, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`)
   })
-}).catch((error) => {
-  console.log("Unable to connect to the database", error)
-})

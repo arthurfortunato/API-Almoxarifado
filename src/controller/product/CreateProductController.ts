@@ -8,7 +8,7 @@ export class CreateProductController {
     const createProductService = new CreateProductService();
 
     if (!product.name) {
-      throw new AppError("Enter the product name", 404);
+      throw new AppError("Enter the product name", 404)
     }
     if (!product.code) {
       throw new AppError("Enter the product code", 404);

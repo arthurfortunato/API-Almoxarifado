@@ -4,7 +4,7 @@
   "port": 1433,
   "username": "Admin",
   "password": "admin",
-  "database": "almoxarifado",
+  "database": "api-almoxarifado",
   "logging": false,
   "entities": [
     "src/entities/*.ts"
