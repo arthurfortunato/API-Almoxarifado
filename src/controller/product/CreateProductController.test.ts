@@ -1,14 +1,13 @@
 import { getConnection } from "typeorm";
 import createConnection from "../../database";
-import { CreateProductController } from "./CreateProductController";
 import { Request } from "express";
+
+import { CreateProductController } from "./CreateProductController";
 import { makeMockResponse } from "../../utils/mocks/mockResponse";
-import { AppError } from "../../error/AppError";
 
 describe("CreateProductController", () => {
   beforeAll(async () => {
-    const connection = await createConnection();
-    await connection.query('DELETE FROM products')
+   await createConnection();
   });
 
   afterAll(async () => {
@@ -20,7 +19,7 @@ describe("CreateProductController", () => {
   const createProductController = new CreateProductController();
 
   const response = makeMockResponse();
-  it("Deve retornar status 201 quando o usuário for criado", async () => {
+  it("Deve retornar status 201 quando o produto for criado", async () => {
     const request = {
       body: {
         name: "Produto",

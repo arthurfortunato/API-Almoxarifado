@@ -7,11 +7,17 @@ export class DeleteProductController {
 
     const { id } = request.params;
 
-    const {name, sector, code, description, amount} = request.body
+    const { name, sector, code, description, amount } = request.body;
 
-    await deleteProductService.execute({ id, name, sector, code, description, amount });
+    await deleteProductService.execute({
+      id,
+      name,
+      sector,
+      code,
+      description,
+      amount,
+    });
 
     return response.status(204).json();
   }
 }
- 
