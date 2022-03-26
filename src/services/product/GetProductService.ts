@@ -8,6 +8,6 @@ export class GetProductService {
       .select("products")
       .getMany();
 
-    return { products };
+    return products;
   }
 }

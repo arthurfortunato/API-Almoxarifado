@@ -11,7 +11,7 @@ interface IProduct {
 
 export class CreateProductService {
   async execute(product: IProduct) {
-    await getRepository(Product)
+   await getRepository(Product)
       .createQueryBuilder()
       .insert()
       .into(Product)
@@ -23,7 +23,7 @@ export class CreateProductService {
         description: product.description,
       })
       .execute();
-
-    return { product };
-  }
+    
+      return { product };
+    }
 }
