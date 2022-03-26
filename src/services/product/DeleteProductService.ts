@@ -1,7 +1,6 @@
 import { getRepository } from "typeorm";
 import { Product } from "../../entities/Product";
 
-
 interface IProduct {
   id: string;
   name: string;
@@ -13,13 +12,13 @@ interface IProduct {
 
 export class DeleteProductService {
   async execute({ id }: IProduct) {
-    const productRepository = getRepository(Product)
+    const product = getRepository(Product)
       .createQueryBuilder()
       .delete()
       .from(Product)
       .where("id = :id", { id })
       .execute();
 
-    return productRepository;
+    return { product };
   }
 }

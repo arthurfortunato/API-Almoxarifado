@@ -19,9 +19,9 @@ describe("GetAllUserService", () => {
   it("Deve retornar todos os produtos cadastrados", async () => {
     await productFakeData.execute();
 
-    const getAllUserService = new GetProductService();
+    const getProductService = new GetProductService();
 
-    const result = await getAllUserService.execute();
+    const result = await getProductService.execute();
     console.log(result);
     expect(result).toHaveProperty("products");
   });
