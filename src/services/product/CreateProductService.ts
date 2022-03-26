@@ -2,11 +2,11 @@ import { getRepository } from "typeorm";
 import { Product } from "../../entities/Product";
 
 interface IProduct {
-  name?: string;
-  code?: string;
-  description?: string;
-  sector?: string;
-  amount?: number;
+  name: string;
+  code: string;
+  description: string;
+  sector: string;
+  amount: number;
 }
 
 export class CreateProductService {
