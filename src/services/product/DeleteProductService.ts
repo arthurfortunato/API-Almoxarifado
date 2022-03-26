@@ -3,12 +3,12 @@ import { Product } from "../../entities/Product";
 
 
 interface IProduct {
-  id?: string;
-  name?: string;
-  code?: string;
-  description?: string;
-  sector?: string;
-  amount?: number;
+  id: string;
+  name: string;
+  code: string;
+  description: string;
+  sector: string;
+  amount: number;
 }
 
 export class DeleteProductService {

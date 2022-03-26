@@ -1,10 +1,14 @@
 import { Router } from "express";
-import { CreateUserController } from "../controller/user/CreateUserController";
+import { CreateUserSignInController } from "../controller/user/CreateUserSignInController";
+import { CreateUserSignUpController } from "../controller/user/CreateUserSignUpController";
+import { GetUserController } from "../controller/user/GetUserController";
 import { userAuthenticated } from "../middleware/userAuthenticated";
 
 export const userRoutes = Router();
-const userController = new CreateUserController();
+const createUserSignInController = new CreateUserSignInController();
+const createUserSignUpController = new CreateUserSignUpController();
+const getUserController = new GetUserController();
 
-userRoutes.post("/signin", userController.signin);
-userRoutes.post("/signup", userController.signup);
-userRoutes.get("/me", userAuthenticated, userController.getUser);
+userRoutes.post("/signin", createUserSignInController.handle);
+userRoutes.post("/signup", createUserSignUpController.handle);
+userRoutes.get("/me", userAuthenticated, getUserController.handle);
