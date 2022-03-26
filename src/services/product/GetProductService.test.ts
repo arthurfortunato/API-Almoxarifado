@@ -23,6 +23,6 @@ describe("GetAllUserService", () => {
 
     const result = await getAllUserService.execute();
     console.log(result);
-    expect(result).toHaveProperty('products');
+    expect(result).toHaveProperty("products");
   });
 });

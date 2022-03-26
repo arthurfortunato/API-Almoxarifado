@@ -8,6 +8,6 @@ export class GetProductController {
 
     const getProducts = await getProductService.execute();
 
-    return response.json(getProducts);
+    return response.status(200).json(getProducts);
   }
 }
