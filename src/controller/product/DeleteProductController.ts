@@ -15,7 +15,7 @@ export class DeleteProductController {
       sector,
       code,
       description,
-      amount,
+      amount, 
     });
 
     return response.status(204).json();
