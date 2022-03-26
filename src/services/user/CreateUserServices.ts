@@ -1,10 +1,10 @@
 import { getRepository } from "typeorm";
-import { User } from "../entities/User";
-import { AppError } from "../error/AppError";
+import { User } from "../../entities/User";
+import { AppError } from "../../error/AppError";
 
 import { sign } from "jsonwebtoken";
 import md5 from "crypto-js/md5";
-import authConfig from "../config/auth";
+import authConfig from "../../config/auth";
 
 interface IUserSignIn {
   email: string;
@@ -45,7 +45,6 @@ export class CreateUserService {
         expiresIn,
       }
     );
-    // @ts-expect-error ignora
     delete existUser.password;
 
     return { accessToken: token };
@@ -94,7 +93,6 @@ export class CreateUserService {
     if (!currentUser) {
       throw new AppError("User not found", 401);
     }
-    // @ts-expect-error ignora
     delete currentUser.password;
 
     return currentUser;

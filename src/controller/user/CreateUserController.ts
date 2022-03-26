@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUserService } from "../services/CreateUserServices";
+import { CreateUserService } from "../../services/user/CreateUserServices";
 
 export class CreateUserController {
   async signin(request: Request, response: Response) {
