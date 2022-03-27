@@ -15,6 +15,18 @@ export class CreateUserSignUpController {
 
     const user = request.body;
 
+    if(!user.name) {
+      throw new AppError("Enter the username", 404)
+    }
+
+    if(!user.email) {
+      throw new AppError("Enter email", 404)
+    }
+
+    if(!user.password) {
+      throw new AppError("Enter password", 404)
+    }
+
     const existUser = await userRepository.findOne({
       where: { email: user.email },
     });
@@ -27,12 +39,10 @@ export class CreateUserSignUpController {
       ...user,
       password: md5(user.password).toString(),
     };
-
-    const userCreate = await userRepository.save(userData);
     
     const { secret, expiresIn } = authConfig.jwt;
 
-    createUserSignUpService.execute(user);
+    createUserSignUpService.execute(userData);
 
     const token = sign(
       {
@@ -40,7 +50,7 @@ export class CreateUserSignUpController {
       },
       secret,
       {
-        subject: userCreate.email,
+        subject: user.email,
         expiresIn,
       }
     );
