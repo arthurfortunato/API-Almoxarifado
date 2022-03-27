@@ -17,12 +17,38 @@ describe("GetAllUserService", () => {
   const productFakeData = new ProductFakeData();
 
   it("Deve retornar todos os produtos cadastrados", async () => {
-    await productFakeData.execute();
-
     const getProductService = new GetProductService();
 
+    await productFakeData.execute()
+
+    const products = [
+      {
+        name: "Algum produto",
+        code: "123",
+        sector: "PR",
+        amount: 1234,
+        description: "alguma descrição",
+      },
+      {
+        name: "Outro produto",
+        code: "456",
+        sector: "Diretoria",
+        amount: 456,
+        description: "alguma descrição",
+      },
+      {
+        name: "produto",
+        code: "898",
+        sector: "Diretoria Científica",
+        amount: 123,
+        description: "alguma descrição",
+      },
+    ];
+
     const result = await getProductService.execute();
+
     console.log(result);
-    expect(result).toHaveProperty("products");
+
+    expect(result).toMatchObject(products);
   });
 });
