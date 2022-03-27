@@ -3,7 +3,7 @@ import createConnection from "../../database";
 import { GetProductService } from "./GetProductService";
 import { ProductFakeData } from "../../utils/mocks/ProductFakeData/productFakeData";
 
-describe("GetAllUserService", () => {
+describe("GetProductService", () => {
   beforeAll(async () => {
     await createConnection();
   });
@@ -19,7 +19,7 @@ describe("GetAllUserService", () => {
   it("Deve retornar todos os produtos cadastrados", async () => {
     const getProductService = new GetProductService();
 
-    await productFakeData.execute()
+    await productFakeData.execute();
 
     const products = [
       {

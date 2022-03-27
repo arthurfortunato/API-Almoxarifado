@@ -24,6 +24,6 @@ describe("CreateProductService", () => {
       description: "alguma descrição",
     });
     console.log(result);
-    expect(result).toHaveProperty('product')
+    expect(result).toHaveProperty("product");
   });
 });

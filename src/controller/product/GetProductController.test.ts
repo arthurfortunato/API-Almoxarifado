@@ -5,7 +5,7 @@ import { makeMockResponse } from "../../utils/mocks/mockResponse";
 import { GetProductController } from "./GetProductController";
 import { ProductFakeData } from "../../utils/mocks/ProductFakeData/productFakeData";
 
-describe("GetAllUserController", () => {
+describe("GetProductController", () => {
   beforeAll(async () => {
     await createConnection();
   });
@@ -21,13 +21,13 @@ describe("GetAllUserController", () => {
   it("Deve retornar status 200 quando pegar todos os usuários", async () => {
     await productFakeData.execute();
 
-    const getAllUserController = new GetProductController();
+    const getProductController = new GetProductController();
 
     const request = makeMockRequest({});
 
     const response = makeMockResponse();
 
-    await getAllUserController.handle(request, response);
+    await getProductController.handle(request, response);
 
     expect(response.state.status).toBe(200);
   });

@@ -2,22 +2,17 @@ import { getRepository } from "typeorm";
 import { Product } from "../../entities/Product";
 
 interface IProduct {
-  id?: string;
-  name?: string;
-  code?: string;
-  description?: string;
-  sector?: string;
-  amount?: number;
+  id: string;
 }
 
 export class GetIdProductService {
-  async execute(product: IProduct) {
+  async execute({ id }: IProduct) {
     const products = await getRepository(Product)
       .createQueryBuilder()
       .select()
-      .where("product.id = :id", { id: product.id })
+      .where("product.id = :id", { id: id })
       .getOne();
 
-    return { products };
+    return products;
   }
 }

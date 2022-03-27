@@ -4,7 +4,7 @@ import { DeleteProductService } from "./DeleteProductService";
 import { ProductFakeData } from "../../utils/mocks/ProductFakeData/productFakeData";
 import { makeMockRequest } from "../../utils/mocks/mockRequest";
 
-describe("GetAllUserService", () => {
+describe("DeleteProductService", () => {
   beforeAll(async () => {
     await createConnection();
   });
@@ -21,11 +21,11 @@ describe("GetAllUserService", () => {
   it("Deve retornar o ID do produto deletado", async () => {
     await productFakeData.createProduct();
 
-    const deleteUserService = new DeleteProductService();
+    const deleteProductService = new DeleteProductService();
 
     const { id } = request.params;
 
-    const result = await deleteUserService.execute( {id} );
+    const result = await deleteProductService.execute({ id });
 
     expect(result).toEqual(id);
   });

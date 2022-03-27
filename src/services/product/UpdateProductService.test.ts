@@ -4,7 +4,7 @@ import { UpdateProductService } from "./UpdateProductService";
 import { ProductFakeData } from "../../utils/mocks/ProductFakeData/productFakeData";
 import { makeMockRequest } from "../../utils/mocks/mockRequest";
 
-describe("UpdateUserService", () => {
+describe("UpdateProductService", () => {
   beforeAll(async () => {
     await createConnection();
   });
@@ -19,13 +19,13 @@ describe("UpdateUserService", () => {
   const request = makeMockRequest({});
 
   it("A edição deve ser igual  ao produto já existente", async () => {
-   const product = await productFakeData.createProduct();
+    const product = await productFakeData.createProduct();
 
-    const updateUserService = new UpdateProductService();
+    const updateProductService = new UpdateProductService();
 
     const { id } = request.params;
 
-    const result = await updateUserService.execute({
+    const result = await updateProductService.execute({
       id: id,
       name: "Algum produto",
       code: "123",
@@ -33,18 +33,18 @@ describe("UpdateUserService", () => {
       amount: 1234,
       description: "alguma descrição",
     });
-    console.log(result)
+    console.log(result);
     expect(result).toEqual(product);
   });
 
   it("O produto editado deve ser diferente do produto já existente", async () => {
-   const product = await productFakeData.createProduct();
+    const product = await productFakeData.createProduct();
 
-    const updateUserService = new UpdateProductService();
+    const updateProductService = new UpdateProductService();
 
     const { id } = request.params;
 
-    const result = await updateUserService.execute({
+    const result = await updateProductService.execute({
       id: id,
       name: "Outro produto",
       code: "456",
@@ -52,7 +52,7 @@ describe("UpdateUserService", () => {
       amount: 56,
       description: "alguma descrição",
     });
-    console.log(result)
+    console.log(result);
     expect(result).not.toEqual(product);
   });
 });
