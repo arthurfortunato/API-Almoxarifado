@@ -18,8 +18,8 @@ describe("UpdateUserService", () => {
   const productFakeData = new ProductFakeData();
   const request = makeMockRequest({});
 
-  it("Deve editar o produto", async () => {
-    await productFakeData.createProduct();
+  it("A edição deve ser igual  ao produto já existente", async () => {
+   const product = await productFakeData.createProduct();
 
     const updateUserService = new UpdateProductService();
 
@@ -27,13 +27,32 @@ describe("UpdateUserService", () => {
 
     const result = await updateUserService.execute({
       id: id,
-      sector: "teste",
-      amount: 152,
-      code: "0001",
-      description: "teste",
-      name: "teste",
+      name: "Algum produto",
+      code: "123",
+      sector: "PR",
+      amount: 1234,
+      description: "alguma descrição",
     });
     console.log(result)
-    expect(result);
+    expect(result).toEqual(product);
+  });
+
+  it("O produto editado deve ser diferente do produto já existente", async () => {
+   const product = await productFakeData.createProduct();
+
+    const updateUserService = new UpdateProductService();
+
+    const { id } = request.params;
+
+    const result = await updateUserService.execute({
+      id: id,
+      name: "Outro produto",
+      code: "456",
+      sector: "DC",
+      amount: 56,
+      description: "alguma descrição",
+    });
+    console.log(result)
+    expect(result).not.toEqual(product);
   });
 });

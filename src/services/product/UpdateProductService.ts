@@ -14,7 +14,7 @@ export class UpdateProductService {
   async execute(product: IProduct) {
     await getRepository(Product)
       .createQueryBuilder()
-      .update(Product)
+      .update()
       .set({
         name: product.name,
         code: product.code,
