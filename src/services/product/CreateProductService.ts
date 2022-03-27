@@ -5,7 +5,7 @@ interface IProduct {
   name: string;
   code: string;
   description: string;
-  sector: string;
+  sector: string; 
   amount: number;
 }
 
