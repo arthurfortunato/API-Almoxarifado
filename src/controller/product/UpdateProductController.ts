@@ -9,7 +9,7 @@ export class UpdateProductController {
 
     const { name, code, sector, amount, description } = request.body;
 
-    const products = await updateProductService.execute({
+    await updateProductService.execute({
       id,
       name,
       code,
@@ -17,6 +17,6 @@ export class UpdateProductController {
       amount,
       description,
     });
-    return response.status(201).json(products);
+    return response.status(201).json();
   }
 }
